@@ -1,134 +1,191 @@
-
-
-// Inclui a biblioteca padrão de entrada/saída para usar a função printf
 #include <stdio.h>
+
+// ==================================================
+// 3. NÍVEL MESTRE (Prototipos das Funções)
+// ==================================================
+//  avisar o 'main' que essas funções existem.
+// Elas estão escritas lá no final do arquivo.
+void moverTorreRecursivo(int passos);
+void moverBispoRecursivo(int passos);
+void moverRainhaRecursivo(int passos);
+
 
 int main() {
     
     // --- Definição das Variáveis ---
     
+    // Nível Novato
     int movimentos_torre = 5;
     int movimentos_bispo = 5;
     int movimentos_rainha = 8;
 
-    // Variável de controle que será usada nos loops
-    int i;
-
-    printf("### Simulação de Movimentos de Xadrez  ###\n\n");
-
-    // ==================================================
-    //   Movimento da Torre (usando loop 'for')
-    // ==================================================
-    // A Torre deve mover 5 casas para a Direita.
+    // Nível Mestre (para o Cavalo)
+    int cavalo_passos_verticais = 2; // 2 para Cima
+    int cavalo_passos_horizontais = 1; // 1 para Direita
+    int v, h; // Variáveis de controle para loops complexos
     
-    printf("--- 1. Movimento da Torre  ---\n");
+    // Variável de controle genérica 
+    int i; 
+
+    printf("### Xadrez: Demonstração de Movimentos (Nível Mestre) ###\n\n");
+
+    // ==================================================
+    // 1. NÍVEL NOVATO (Refatorado para Mestre)
+    // ==================================================
+    // REQUISITO MESTRE: Substituir os loops simples por recursividade.
+
+    // --- Movimento da Torre ---
+    printf("--- 1. Movimento da Torre (Recursivo) ---\n");
     printf("Movendo %d casas para a Direita...\n", movimentos_torre);
+    
+    // O loop 'for' original foi substituído por esta chamada de função recursiva:
+    moverTorreRecursivo(movimentos_torre);
 
-    // O loop 'for' vai de i=0 até i=4 (total de 5 vezes)
-    for (i = 0; i < movimentos_torre; i++) {
-        printf("Direita\n");
-    }
 
-    // ==================================================
-    //     Movimento do Bispo (usando loop 'while')
-    // ==================================================
-    // O Bispo deve mover 5 casas na diagonal (Cima, Direita).
-
-    printf("\n--- 2. Movimento do Bispo  ---\n");
+    // --- Movimento do Bispo ---
+    printf("\n--- 2. Movimento do Bispo (Recursivo + Aninhado) ---\n");
     printf("Movendo %d casas para Cima, Direita...\n", movimentos_bispo);
+    
+    // O loop 'while' original foi substituído por esta chamada de função recursiva:
 
-    // Reinicia o contador para o novo loop
-    i = 0; 
+    // 1. É recursiva; 2. Contém loops aninhados por dentro.)
+    moverBispoRecursivo(movimentos_bispo);
 
-    // O 'while' continua enquanto 'i' for menor que 5
-    while (i < movimentos_bispo) {
-        printf("Cima, Direita\n");
-        
-        // Incrementa o 'i' para não ficar em loop infinito
-        i++;
-    }
 
-    // ==================================================
-    //              Movimento da Rainha (do- While)
-    // ==================================================
-    // A Rainha deve mover 8 casas para a Esquerda.
-
-    printf("\n---  3. Movimento da Rainha  ---\n");
+    // --- Movimento da Rainha ---
+    printf("\n--- 3. Movimento da Rainha (Recursivo) ---\n");
     printf("Movendo %d casas para Esquerda...\n", movimentos_rainha);
 
-    // Reinicia o contador
-    i = 0;
+    // O loop 'do-while' original foi substituído por esta chamada de função recursiva:
+    moverRainhaRecursivo(movimentos_rainha);
 
-    // O 'while' primeiro executa o bloco...
-    do {
-        printf("Esquerda\n");
-        
-        // Incrementa o 'i'
-        i++;
 
-    } while (i < movimentos_rainha); // ...e  checa se 'i' é menor que 8
-    
-
-   // ==================================================
-    // 2. CÓDIGO DO NÍVEL AVENTUREIRO (Cavalo)
     // ==================================================
-    // (Aqui você adiciona o código novo)
-    
-    // --- Variáveis (Aventureiro) ---
-    int casas_baixo = 2;
-    int casas_esquerda = 1;
-    int movimento_L = 0; // Controle do loop externo
+    // 2. NÍVEL AVENTUREIRO (Refatorado para Mestre)
+    // ==================================================
+    // REQUISITO MESTRE: Aprimorar o Cavalo com loops complexos,
+    // múltiplas variáveis, 'continue' e 'break'.
+    // Novo movimento: 2 Cima, 1 Direita.
 
-    // --- Movimento do Cavalo ---
-    printf("\n--- 4. Movimento do Cavalo (Nível Aventureiro) ---\n");
-    printf("Movendo em L: %d casas para Baixo, %d para Esquerda...\n", casas_baixo, casas_esquerda);
+    printf("\n--- 4. Movimento do Cavalo (Loops Complexos - Mestre) ---\n");
+    printf("Movendo em L: %d casas para Cima, %d para Direita...\n", cavalo_passos_verticais, cavalo_passos_horizontais);
 
-    while (movimento_L < 1) {
+    // Loop aninhado complexo (Nível Mestre)
+    // O loop externo (v) controla os passos verticais (Cima)
+    for (v = 1; v <= cavalo_passos_verticais; v++) {
         
-        // Loop FOR aninhado
-        for (i = 0; i < casas_baixo; i++) {
-            printf("Baixo\n");
+        printf("Cima\n"); // Move para cima
+
+        // O loop interno (h) controla os passos horizontais (Direita)
+        for (h = 1; h <= cavalo_passos_horizontais; h++) {
+            
+            // CONDIÇÃO COMPLEXA:
+            //  mover para a Direita *depois* do
+            // último passo para Cima (quando v == 2).
+            if (v < cavalo_passos_verticais) {
+                // 'continue' para o loop FOR INTERNO.
+                // Mas como o 'v' não é 2, ele vai pular
+                // o 'printf("Direita\n")' e o 'break'.
+                continue; 
+            }
+            
+            // Se 'v' for 2 (último passo vertical), ele não usa o 'continue'
+            // e executa a ação horizontal:
+            printf("Direita\n");
+
+            // 'break' sai do loop INTERNO (h).
+            //  isso porque o cavalo só dá *um* passo
+            // para a direita, não importa o valor de 'cavalo_passos_horizontais'.
+            break; 
         }
-        
-        // Loop DO-WHILE aninhado
-        i = 0;
-        do {
-            printf("Esquerda\n");
-            i++;
-        } while (i < casas_esquerda);
-        
-        movimento_L++; 
     }
 
     // ==================================================
-    // 3. CÓDIGO DO NÍVEL MESTRE (Virá aqui depois)
+    // 3. NÍVEL MESTRE (Implementação das Funções)
     // ==================================================
-    // (Este espaço fica reservado para o próximo desafio)
-
+    // As funções recursivas são definidas *depois* da 'main'.
+    // O código acima ( main) apenas 'chama' elas.
 
     // --- Finalização ---
     printf("\n### Demonstração Concluída! ###\n");
 
+    return 0; // Fim da função 'main'
+}
+
+
+// --------------------------------------------------
+// IMPLEMENTAÇÃO DAS FUNÇÕES RECURSIVAS (NÍVEL MESTRE)
+// --------------------------------------------------
+
+
+void moverTorreRecursivo(int passos) {
+    // 1. Caso Base (Condição de Parada):
+    // Se não há mais passos, a função para de se chamar.
+    if (passos <= 0) {
+        return; 
+    }
+    
+    // 2. Ação (O que a função faz neste passo):
+    printf("Direita\n");
+    
+    // 3. Chamada Recursiva:
+    // A função chama a si mesma, mas com 'passos - 1'.
+    moverTorreRecursivo(passos - 1);
+}
 
 
 
+void moverBispoRecursivo(int passos) {
+    // 1. Caso Base (Condição de Parada):
+    if (passos <= 0) {
+        return;
+    }
+
+    // 2. Ação (Requisito: com loops aninhados V/H):
+    // Usamos os loops aninhados para simular UMA etapa do movimento.
+    // Mesmo que eles rodem só uma vez, cumpre o requisito.
+    
+    // Loop "vertical" (externo)
+    for (int v = 0; v < 1; v++) {
+        // Loop "horizontal" (interno)
+        for (int h = 0; h < 1; h++) {
+            // Ação do passo diagonal
+            printf("Cima, Direita\n"); 
+        }
+    }
+
+    // 3. Chamada Recursiva:
+    moverBispoRecursivo(passos - 1);
+}
 
 
 
+void moverRainhaRecursivo(int passos) {
+    // 1. Caso Base (Condição de Parada):
+    if (passos <= 0) {
+        return;
+    }
+    
+    // 2. Ação (O que a função faz neste passo):
+    printf("Esquerda\n");
+    
+    // 3. Chamada Recursiva:
+    moverRainhaRecursivo(passos - 1);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // Retorna 0 para indicar que o programa terminou com sucesso
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
