@@ -53,7 +53,7 @@ int main() {
     // ==================================================
     // A Rainha deve mover 8 casas para a Esquerda.
 
-    printf("\n---  Movimento da Rainha  ---\n");
+    printf("\n---  3. Movimento da Rainha  ---\n");
     printf("Movendo %d casas para Esquerda...\n", movimentos_rainha);
 
     // Reinicia o contador
