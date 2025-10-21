@@ -49,7 +49,7 @@ int main() {
     }
 
     // ==================================================
-    //              Movimento da Rainha 
+    //              Movimento da Rainha (do- While)
     // ==================================================
     // A Rainha deve mover 8 casas para a Esquerda.
 
