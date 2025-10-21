@@ -67,8 +67,67 @@ int main() {
         i++;
 
     } while (i < movimentos_rainha); // ...e  checa se 'i' é menor que 8
+    
 
-    printf("\n### Concluído! ###\n");
+   // ==================================================
+    // 2. CÓDIGO DO NÍVEL AVENTUREIRO (Cavalo)
+    // ==================================================
+    // (Aqui você adiciona o código novo)
+    
+    // --- Variáveis (Aventureiro) ---
+    int casas_baixo = 2;
+    int casas_esquerda = 1;
+    int movimento_L = 0; // Controle do loop externo
+
+    // --- Movimento do Cavalo ---
+    printf("\n--- 4. Movimento do Cavalo (Nível Aventureiro) ---\n");
+    printf("Movendo em L: %d casas para Baixo, %d para Esquerda...\n", casas_baixo, casas_esquerda);
+
+    while (movimento_L < 1) {
+        
+        // Loop FOR aninhado
+        for (i = 0; i < casas_baixo; i++) {
+            printf("Baixo\n");
+        }
+        
+        // Loop DO-WHILE aninhado
+        i = 0;
+        do {
+            printf("Esquerda\n");
+            i++;
+        } while (i < casas_esquerda);
+        
+        movimento_L++; 
+    }
+
+    // ==================================================
+    // 3. CÓDIGO DO NÍVEL MESTRE (Virá aqui depois)
+    // ==================================================
+    // (Este espaço fica reservado para o próximo desafio)
+
+
+    // --- Finalização ---
+    printf("\n### Demonstração Concluída! ###\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Retorna 0 para indicar que o programa terminou com sucesso
     return 0;
