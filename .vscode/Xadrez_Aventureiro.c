@@ -1,11 +1,3 @@
-/**
- * @file Xadrez_Novato.c
- * @brief Demonstração de movimentos de peças de xadrez (Nível Aventureiro)
- * @details Este programa demonstra o movimento de várias peças.
- *
- * @author Leyzi (adaptado por Gemini)
- * @date 21 de outubro de 2025
- */
 
 #include <stdio.h>
 
