@@ -173,7 +173,6 @@ void moverRainhaRecursivo(int passos) {
     moverRainhaRecursivo(passos - 1);
 
 
-    return 0;
 }
 
 
